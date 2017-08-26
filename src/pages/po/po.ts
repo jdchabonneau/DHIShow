@@ -3,12 +3,13 @@ import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-list',
-  templateUrl: 'list.html'
+  templateUrl: 'po.html'
 })
-export class ListPage {
+export class POPage {
   selectedItem: any;
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
+  title: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
@@ -19,10 +20,13 @@ export class ListPage {
     'american-football', 'boat', 'bluetooth', 'build'];
 
     this.items = [];
-    for (let i = 1; i < 11; i++) {
+    
+    this.title = navParams.get("title");
+    let pageInfos = navParams.get("pageInfos");
+    for (let i = 0; i < pageInfos.length; i++) {
       this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
+        title: pageInfos[i].name,
+        note: 'This is type #' + pageInfos[i].pageType,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
@@ -30,7 +34,7 @@ export class ListPage {
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
+    this.navCtrl.push(POPage, {
       item: item
     });
   }

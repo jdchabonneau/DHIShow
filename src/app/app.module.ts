@@ -5,6 +5,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { POPage } from '../pages/po/po';
+import { DummyPage } from '../pages/dummy/dummy';
+import { ShowReceivingPage } from '../pages/show-receiving/show-receiving';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -13,7 +15,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
-    POPage
+    POPage,
+    DummyPage,
+    ShowReceivingPage,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    POPage
+    POPage,
+    DummyPage,
+    ShowReceivingPage,
   ],
   providers: [
     StatusBar,

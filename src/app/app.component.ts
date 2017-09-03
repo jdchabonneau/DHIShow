@@ -5,7 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { POPage } from '../pages/po/po';
+import { DummyPage } from '../pages/dummy/dummy';
 import { IPageInfo } from '../interfaces/iPageInfo';
+import { ShowReceivingPage } from '../pages/show-receiving/show-receiving';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,22 +24,22 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Whse Map', pageInfos: [{ name: "wm1", pageType: 0 }, { name: "wm2", pageType: 0 }, { name: "wm3", pageType: 0 }] },
-      { title: 'Purchase Orders', pageInfos: [{ name: "Create New Purchase Order", pageType: 0 }, { name: "Edit Existing Purchase Order", pageType: 1 }, { name: "Show All PO's", pageType: 0 }] },
-      { title: 'Receiving', pageInfos: [{ name: "Create New Receiving Order", pageType: 0 }, { name: "Edit Existing Receiving Order", pageType: 1 }, { name: "Show All Receiving Orders", pageType: 0 }, { name: "Assign Locations", pageType: 0 }, { name: "Shelve an Order", pageType: 1 }] },
+      { title: 'Whse Map', pageInfos: [{page: DummyPage, name: "wm1", pageType: 0 }, {page: DummyPage, name: "wm2", pageType: 0 }, {page: DummyPage, name: "wm3", pageType: 0 }] },
+      { title: 'Purchase Orders', pageInfos: [{page: DummyPage, name: "Create New Purchase Order", pageType: 0 }, {page: DummyPage, name: "Edit Existing Purchase Order", pageType: 1 }, {page: DummyPage, name: "Show All PO's", pageType: 0 }] },
+      { title: 'Receiving', pageInfos: [{page: DummyPage, name: "Create New Receiving Order", pageType: 0 }, {page: DummyPage, name: "Edit Existing Receiving Order", pageType: 1 }, {page: ShowReceivingPage, name: "Show All Receiving Orders", pageType: 0 }, {page: DummyPage, name: "Assign Locations", pageType: 0 }, {page: DummyPage, name: "Shelve an Order", pageType: 1 }] },
       {
-        title: 'Inventory', pageInfos: [{ name: "Item Info", pageType: 0 }, { name: "Find These Items", pageType: 1 }, { name: "Snapshot", pageType: 0 },
-        { name: "Customer Inventory", pageType: 0 }, { name: "In-Stock Inventory", pageType: 0 }, { name: "Physical Counts", pageType: 0 }, { name: "Storage History", pageType: 0 },
-        { name: "Warehouse Activity", pageType: 0 }, { name: "Import Items", pageType: 0 }, { name: "Modify Items", pageType: 0 }, { name: "Item Types", pageType: 0 },]
+        title: 'Inventory', pageInfos: [{page: DummyPage, name: "Item Info", pageType: 0 }, {page: DummyPage, name: "Find These Items", pageType: 1 }, {page: DummyPage, name: "Snapshot", pageType: 0 },
+        {page: DummyPage, name: "Customer Inventory", pageType: 0 }, {page: DummyPage, name: "In-Stock Inventory", pageType: 0 }, {page: DummyPage, name: "Physical Counts", pageType: 0 }, {page: DummyPage, name: "Storage History", pageType: 0 },
+        {page: DummyPage, name: "Warehouse Activity", pageType: 0 }, {page: DummyPage, name: "Import Items", pageType: 0 }, {page: DummyPage, name: "Modify Items", pageType: 0 }, {page: DummyPage, name: "Item Types", pageType: 0 },]
       },
-      { title: 'Fill Orders', pageInfos: [{ name: "Create New Fill Order", pageType: 0 }, { name: "Edit Existing Fill Order", pageType: 1 }, { name: "Show All Fill Orders", pageType: 0 }, { name: "Delivery Orders", pageType: 0 }, { name: "Open Will Calls", pageType: 1 }] },
+      { title: 'Fill Orders', pageInfos: [{page: DummyPage, name: "Create New Fill Order", pageType: 0 }, {page: DummyPage, name: "Edit Existing Fill Order", pageType: 1 }, {page: DummyPage, name: "Show All Fill Orders", pageType: 0 }, {page: DummyPage, name: "Delivery Orders", pageType: 0 }, {page: DummyPage, name: "Open Will Calls", pageType: 1 }] },
       {
-        title: 'Administration', pageInfos: [{ name: "Admin Approvals", pageType: 0 }, { name: "Creaye Billing", pageType: 0 }, { name: "Customers", pageType: 0 },
-        { name: "Items", pageType: 0 }, { name: "Label Printers", pageType: 0 }, { name: "Pallets", pageType: 0 }, { name: "Rate Tables", pageType: 0 },
-        { name: "Settings", pageType: 0 }, { name: "Ship To's", pageType: 0 }, { name: "Special Charges", pageType: 0 }, { name: "Ship Via's", pageType: 0 },
-        { name: "Users", pageType: 0 }, { name: "View Billing", pageType: 0 }, { name: "Warehouses", pageType: 0 }, ]
+        title: 'Administration', pageInfos: [{page: DummyPage, name: "Admin Approvals", pageType: 0 }, {page: DummyPage, name: "Creaye Billing", pageType: 0 }, {page: DummyPage, name: "Customers", pageType: 0 },
+        {page: DummyPage, name: "Items", pageType: 0 }, {page: DummyPage, name: "Label Printers", pageType: 0 }, {page: DummyPage, name: "Pallets", pageType: 0 }, {page: DummyPage, name: "Rate Tables", pageType: 0 },
+        {page: DummyPage, name: "Settings", pageType: 0 }, {page: DummyPage, name: "Ship To's", pageType: 0 }, {page: DummyPage, name: "Special Charges", pageType: 0 }, {page: DummyPage, name: "Ship Via's", pageType: 0 },
+        {page: DummyPage, name: "Users", pageType: 0 }, {page: DummyPage, name: "View Billing", pageType: 0 }, {page: DummyPage, name: "Warehouses", pageType: 0 }, ]
       },
-      { title: 'Diagnostics', pageInfos: [{ name: "Check This", pageType: 0 }, { name: "Check That", pageType: 0 }, { name: "Check the Other", pageType: 0 }] },
+      { title: 'Diagnostics', pageInfos: [{page: DummyPage, name: "Check This", pageType: 0 }, {page: DummyPage, name: "Check That", pageType: 0 }, {page: DummyPage, name: "Check the Other", pageType: 0 }] },
     ];
 
   }

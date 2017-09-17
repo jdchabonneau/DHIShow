@@ -3,11 +3,13 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { DhiHeaderComponent } from '../components/dhi-header/dhi-header';
 import { HomePage } from '../pages/home/home';
 import { POPage } from '../pages/po/po';
 import { DummyPage } from '../pages/dummy/dummy';
 import { IPageInfo } from '../interfaces/iPageInfo';
 import { ShowReceivingPage } from '../pages/show-receiving/show-receiving';
+import { ItemTypesPage } from '../pages/item-types/item-types';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +32,7 @@ export class MyApp {
       {
         title: 'Inventory', pageInfos: [{page: DummyPage, name: "Item Info", pageType: 0 }, {page: DummyPage, name: "Find These Items", pageType: 1 }, {page: DummyPage, name: "Snapshot", pageType: 0 },
         {page: DummyPage, name: "Customer Inventory", pageType: 0 }, {page: DummyPage, name: "In-Stock Inventory", pageType: 0 }, {page: DummyPage, name: "Physical Counts", pageType: 0 }, {page: DummyPage, name: "Storage History", pageType: 0 },
-        {page: DummyPage, name: "Warehouse Activity", pageType: 0 }, {page: DummyPage, name: "Import Items", pageType: 0 }, {page: DummyPage, name: "Modify Items", pageType: 0 }, {page: DummyPage, name: "Item Types", pageType: 0 },]
+        {page: DummyPage, name: "Warehouse Activity", pageType: 0 }, {page: DummyPage, name: "Import Items", pageType: 0 }, {page: DummyPage, name: "Modify Items", pageType: 0 }, {page: ItemTypesPage, name: "Item Types", pageType: 0 },]
       },
       { title: 'Fill Orders', pageInfos: [{page: DummyPage, name: "Create New Fill Order", pageType: 0 }, {page: DummyPage, name: "Edit Existing Fill Order", pageType: 1 }, {page: DummyPage, name: "Show All Fill Orders", pageType: 0 }, {page: DummyPage, name: "Delivery Orders", pageType: 0 }, {page: DummyPage, name: "Open Will Calls", pageType: 1 }] },
       {

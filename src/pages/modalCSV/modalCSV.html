@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      CSV Options
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+              <ion-icon name="md-close"></ion-icon>
+            </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Skip Column Titles</ion-label>
+    <ion-checkbox color="dark" [(ngModel)]="p.skipHeader" name="includeTitles" checked="false"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Include Only Selected Rows</ion-label>
+    <ion-checkbox color="dark" [(ngModel)]="p.onlySelected" name="selectedRowsOnly"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary">File Name</ion-label>
+    <ion-input placeholder="export.csv" [(ngModel)]="p.fileName" name="fileName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary">Custom Header</ion-label>
+    <ion-textarea  [(ngModel)]="p.customHeader" name="customHeader"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary">Custom Footer</ion-label>
+    <ion-textarea [(ngModel)]="p.customFooter" name="customFooter"></ion-textarea>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button (click)="dismiss()" color="secondary"> Cancel</button>
+    <button ion-button (click)="createFile()" >Create File</button>
+</ion-toolbar>
+</ion-footer>

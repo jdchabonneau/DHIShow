@@ -15,6 +15,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DhiDataProvider } from '../providers/dhi-data/dhi-data';
 import { UsersProvider } from '../providers/users/users';
+import { ModalController } from 'ionic-angular';
+import { ModalCSVPage } from '../pages/modalCSV/modalCSV';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { UsersProvider } from '../providers/users/users';
     ItemTypesPage,
     DhiHeaderComponent,
     ShowReceivingPage,
+    ModalCSVPage,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,8 @@ import { UsersProvider } from '../providers/users/users';
     ItemTypesPage,
     DhiHeaderComponent,
     ShowReceivingPage,
-  ],
+    ModalCSVPage,
+    ],
   providers: [
     StatusBar,
     SplashScreen,

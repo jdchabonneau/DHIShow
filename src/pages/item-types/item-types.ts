@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { GridOptions } from "ag-grid/main";
-
-/**
- * Generated class for the ItemTypesPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { ModalCSVPage } from '../../pages/modalCSV/modalCSV';
 
 @IonicPage()
 @Component({
@@ -18,10 +12,12 @@ export class ItemTypesPage {
   gridOptions: GridOptions;
   columnDefs: any[]
   rowData: any[];
+  sbInput;
   showToolPanel = true;
   hideDeleteBtn = true;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public modalCtrl: ModalController) {
     this.gridOptions = <GridOptions>{
       "onSelectionChanged": (event: any) => {
         var selectedRows = event.api.getSelectedRows();
@@ -40,7 +36,7 @@ export class ItemTypesPage {
       },
       { headerName: "ID", field: "ID" },
       {
-        headerName: "Active", field: "IsActive", cellRenderer: params => {
+        headerName: "Active", field: "IsActive", editable: true, cellRenderer: params => {
           return `<input type='checkbox' ${params.value > 0 ? 'checked' : ''} />`;
         }
       },
@@ -1156,25 +1152,36 @@ export class ItemTypesPage {
     ];
   }
 
-  onCSVExport(){
-    this.gridOptions.api.exportDataAsCsv();
+  filterItems(e){
+    this.gridOptions.api.setQuickFilter(this.sbInput);
+  }
+
+  onCSVExport() {
+    //    this.gridOptions.api.exportDataAsCsv();
+    let modal = this.modalCtrl.create(ModalCSVPage, {"api": this.gridOptions.api});
+    modal.present();
   }
 
   onNewRow(event) {
-    this.rowData.unshift({"ID": 0, "Type": "New", "IsActive": 1, "ShortName": "Nw"});
-    this.gridOptions.rowData = null;
-    this.gridOptions.rowData = this.rowData;
-    this.gridOptions.api.redrawRows();
-  }
+    this.rowData.unshift({ "ID": 0, "Type": "New", "IsActive": 1, "ShortName": "Nw" });
+//    this.gridOptions.rowData = null;
+//    this.gridOptions.rowData = this.rowData;
+this.gridOptions.api.setRowData(this.rowData);
+}
 
   onDeleteRow(event) {
-    console.log("delete: ", event);
+    var selectedRows = this.gridOptions.api.getSelectedRows();
+    var selectedRowsString = '';
+    selectedRows.forEach( function(selectedRow, index) {
+        if (index!=0) {
+            selectedRowsString += ', ';
+        }
+        selectedRowsString += selectedRow.ID;
+    });
+    alert(selectedRowsString);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ItemTypesPage');
-    console.log("this: ", this);
-    console.log("this.go: ", this.gridOptions);
   }
 
 }

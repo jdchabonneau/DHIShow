@@ -16,6 +16,7 @@
       <button ion-button small color="default" (click)="onCSVExport()">CSV Export</button>
       <button ion-button small color="danger" (click)="onDeleteRow()" [attr.disabled]="hideDeleteBtn ? '' : null">Delete</button>
       <button ion-button small color="secondary" outline># Items: {{rowData.length}}</button>
+      <ion-searchbar [(ngModel)]="sbInput" (ionInput)="filterItems($event)"></ion-searchbar>
     </ion-buttons>
     </div>
 <ag-grid-angular style=" background: red; width: 100%; height: 100%; " 

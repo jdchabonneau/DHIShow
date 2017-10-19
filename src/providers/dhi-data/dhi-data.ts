@@ -15,6 +15,8 @@ export class DhiDataProvider {
       { name: "Maui", id: 0, selected: false },
       { name: "Oahu", id: 2, selected: true },
       { name: "Kona", id: 3, selected: false },
+      { name: "Hilo", id: 4, selected: false },
+      { name: "NYC", id: 8, selected: false },
     ];
   }
 

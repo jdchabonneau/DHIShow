@@ -3,14 +3,9 @@
   <div>
     <ion-row>
         <ion-col col-4>
-          
-          <button ion-button outline round small>User: Jack</button>
-          <button ion-button outline round small>Whse: Maui</button>
+          <button ion-button outline round small (click)="changeUser()">User: {{currentUser}}</button>
+          <button ion-button outline round small (click)="changeWhse()">Whse: {{currentWhse}}</button>
           <button ion-button outline round small color="secondary">Status: OK!</button>
-          <!-- <ion-select>
-          <ion-option *ngFor="let warehouse of warehouses" [value]="warehouse.id">
-            {{warehouse.name}}</ion-option>
-        </ion-select> -->
       </ion-col>
       <ion-col>
         <h1>{{text}}</h1>

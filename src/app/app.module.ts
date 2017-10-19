@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { DhiHeaderComponent } from '../components/dhi-header/dhi-header';
+import { PopoverPage } from './../components/dhi-header/pop-over';
 import { HomePage } from '../pages/home/home';
 import { POPage } from '../pages/po/po';
 import { DummyPage } from '../pages/dummy/dummy';
@@ -29,6 +30,7 @@ import { ModalCSVPage } from '../pages/modalCSV/modalCSV';
     DhiHeaderComponent,
     ShowReceivingPage,
     ModalCSVPage,
+    PopoverPage
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ import { ModalCSVPage } from '../pages/modalCSV/modalCSV';
     DhiHeaderComponent,
     ShowReceivingPage,
     ModalCSVPage,
+    PopoverPage,
     ],
   providers: [
     StatusBar,

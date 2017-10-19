@@ -1,0 +1,21 @@
+<h2>Please choose a warehouse:</h2>
+
+<ion-list>
+  <!-- <ion-select  interface="popover">
+    <ion-option *ngFor="let warehouse of warehouses" [value]="warehouse.id">
+      {{warehouse.name}}
+    </ion-option>
+  </ion-select> -->
+  <ion-item *ngFor="let warehouse of warehouses">
+    <button ion-button color="default" (click)="onChooseWhse(warehouse.id)" outline block>
+    <ion-icon *ngIf="warehouse.id === selectedWhseId" name='rose'></ion-icon>
+    &nbsp; &nbsp; {{warehouse.name}}&nbsp; &nbsp; 
+  </button>
+  </ion-item>
+  <ion-item>
+    <ion-footer>
+      <button ion-button color="secondary" (click)="onCancel()">Cancel</button>
+      <button ion-button color="primary" (click)="onOK()">OK</button>
+    </ion-footer>
+  </ion-item>
+</ion-list>

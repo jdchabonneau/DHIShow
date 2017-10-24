@@ -1,0 +1,57 @@
+<form #form="ngForm" (ngSubmit)="logForm(form)" novalidate>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Customer</ion-label>
+      <ion-input type="text" required [(ngModel)]="todo.customer" name="customer"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>ID</ion-label>
+      <ion-input [(ngModel)]="todo.ID" name="ID"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Warehouse</ion-label>
+      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Rceived Date</ion-label>
+      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Carrier</ion-label>
+      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Bill of Lading Number</ion-label>
+      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Reference Number</ion-label>
+      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Suplier</ion-label>
+      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Pallets Received</ion-label>
+      <ion-input type="number" [(ngModel)]="todo.Pallets" name="Pallets"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Cartons Received</ion-label>
+      <ion-input type="number"  [(ngModel)]="todo.Cartons" name="Carons"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Received By</ion-label>
+      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary" stacked>Shelved By</ion-label>
+        <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label color="primary" stacked>Special Instructions</ion-label>
+          <ion-textarea [(ngModel)]="todo.Instructions" name="Instructions"></ion-textarea>
+        </ion-item>
+          <button ion-button type="submit" block>Add Todo</button>
+  </ion-list>
+</form>

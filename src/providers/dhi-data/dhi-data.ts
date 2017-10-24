@@ -6,19 +6,49 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DhiDataProvider {
 
+  items;
+  customers;
+  warehouses;
+  url = "http://ims.beta.deliveryhawaii.com/Services/Service1.svc/";
+
   constructor(public http: Http) {
-    console.log('Hello DhiDataProvider Provider');
+    //this.getItemTypes2();
   }
 
   getWarehouses() {
-    return [
-      { name: "Maui", id: 0, selected: false },
-      { name: "Oahu", id: 2, selected: true },
-      { name: "Kona", id: 3, selected: false },
-      { name: "Hilo", id: 4, selected: false },
-      { name: "NYC", id: 8, selected: false },
-    ];
+    return this.http.get(this.url + "GetWarehouses");
+    
+    // return [
+    //   { name: "Maui", id: 0, selected: false },
+    //   { name: "Oahu", id: 2, selected: true },
+    //   { name: "Kona", id: 3, selected: false },
+    //   { name: "Hilo", id: 4, selected: false },
+    //   { name: "NYC", id: 8, selected: false },
+    // ];
   }
+
+  getCustomers(){
+    return this.http.get(this.url + "GetCustomers2");
+    //map(res => res.json()).subscribe(data => {
+    //this.customers = data;
+    //console.log("getCustomers", this.customers);})
+  }
+
+  getShipVias(){
+    return this.http.get(this.url + "GetShipVias");    
+  }
+
+  getLabelPrinters(){
+    return this.http.get(this.url + "GetLabelPrinters");    
+  }
+
+  getItemTypes2(){
+    this.http.get(this.url + "GetTypes").
+    map(res => res.json()).subscribe(data => {
+    this.items = data;
+    console.log("getItemTypes2", this.items);})
+   
+    }
 
   getItemTypes() {
     return [

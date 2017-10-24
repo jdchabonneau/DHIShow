@@ -20,7 +20,7 @@ export class DhiHeaderComponent {
     this.text = 'Delivery Hawaii, Inc.';
     //this.currentWhse = "Maui";
 
-    this.warehouses = dhiDataProvider.getWarehouses();
+    dhiDataProvider.getWarehouses().subscribe(resp=>this.warehouses = resp.json());
   }
 
   changeUser() {

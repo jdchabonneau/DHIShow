@@ -1,0 +1,1 @@
+LabelPrinter needs to support editing

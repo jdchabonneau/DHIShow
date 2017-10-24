@@ -7,8 +7,8 @@
     </ion-option>
   </ion-select> -->
   <ion-item *ngFor="let warehouse of warehouses">
-    <button ion-button color="default" (click)="onChooseWhse(warehouse.id)" outline block>
-    <ion-icon *ngIf="warehouse.id === selectedWhseId" name='rose'></ion-icon>
+    <button ion-button color="default" (click)="onChooseWhse(warehouse.ID)" outline block>
+    <ion-icon *ngIf="warehouse.ID === selectedWhseId" name='rose'></ion-icon>
     &nbsp; &nbsp; {{warehouse.name}}&nbsp; &nbsp; 
   </button>
   </ion-item>

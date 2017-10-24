@@ -21,7 +21,13 @@ styles:[".warehouse-popover{height: 400px}", ".popover-content { height: 400px;}
 //        whse:string, whseId:number,
         private navParams: NavParams, private dhiDataPrvider: DhiDataProvider,
         private viewController: ViewController) {
-      this.warehouses =  this.dhiDataPrvider.getWarehouses();
+            this.dhiDataPrvider.getCustomers();
+    this.dhiDataPrvider.getWarehouses().subscribe(
+        resp=> {
+            let w = resp.json();
+            w.map(w=>w.selected= w.ID == 2? true : false);
+            this.warehouses = w;
+        })
       this.selectedWhse = this.navParams.data.currentWhse;
       this.selectedWhseId = this.navParams.data.currentWhseId;
       
@@ -31,7 +37,7 @@ styles:[".warehouse-popover{height: 400px}", ".popover-content { height: 400px;}
 
     onChooseWhse(ID){
         for(let i=0; i < this.warehouses.length; i++){
-            if (this.warehouses[i].id == ID){
+            if (this.warehouses[i].ID == ID){
                 this.selectedWhseId = ID;
                 this.selectedWhse = this.warehouses[i].name;
                 return;

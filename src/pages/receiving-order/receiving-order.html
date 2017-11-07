@@ -1,57 +1,89 @@
-<form #form="ngForm" (ngSubmit)="logForm(form)" novalidate>
-  <ion-list>
-    <ion-item>
-      <ion-label stacked>Customer</ion-label>
-      <ion-input type="text" required [(ngModel)]="todo.customer" name="customer"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>ID</ion-label>
-      <ion-input [(ngModel)]="todo.ID" name="ID"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Warehouse</ion-label>
-      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Rceived Date</ion-label>
-      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Carrier</ion-label>
-      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Bill of Lading Number</ion-label>
-      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Reference Number</ion-label>
-      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Suplier</ion-label>
-      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Pallets Received</ion-label>
-      <ion-input type="number" [(ngModel)]="todo.Pallets" name="Pallets"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Cartons Received</ion-label>
-      <ion-input type="number"  [(ngModel)]="todo.Cartons" name="Carons"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Received By</ion-label>
-      <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label color="primary" stacked>Shelved By</ion-label>
-        <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
-      </ion-item>
-      <ion-item>
+<ion-header>
+  <dhi-header></dhi-header>
+  <ion-navbar>
+    <ion-title>Receiving Reports</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <div style="width: 50%; float:left;">
+    <h4 style="text-align:center;"> Report Details</h4>
+    <form #form="ngForm" (ngSubmit)="logForm(form)" novalidate>
+      <ion-list>
+        <ion-item>
+            <ion-label color="primary" stacked name="cust">Customer</ion-label>
+            <!-- <ion-select [(ngModel)]="gaming"> -->
+              <ion-select>
+              <ion-option value="nes">NES</ion-option>
+              <ion-option value="n64">Nintendo64</ion-option>
+              <ion-option value="ps">PlayStation</ion-option>
+              <ion-option value="genesis">Sega Genesis</ion-option>
+              <ion-option value="saturn">Sega Saturn</ion-option>
+              <ion-option value="snes">SNES</ion-option>
+            </ion-select>            
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="primary" stacked>Customer</ion-label>
+          <ion-input type="text" required [(ngModel)]="todo.customer" name="customer" autofocus></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>ID</ion-label>
+          <!-- <ion-input [(ngModel)]="todo.ID" name="ID" (keypress)="onDateKeyPress($event)"></ion-input> -->
+          <ion-input disabled [(ngModel)]="todo.ID" name="ID" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>Warehouse</ion-label>
+          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>Rceived Date</ion-label>
+          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>Carrier</ion-label>
+          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>Bill of Lading Number</ion-label>
+          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>Reference Number</ion-label>
+          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>Suplier</ion-label>
+          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>Pallets Received</ion-label>
+          <ion-input type="number" [(ngModel)]="todo.Pallets" name="Pallets"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>Cartons Received</ion-label>
+          <ion-input type="number" [(ngModel)]="todo.Cartons" name="Carons"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>Received By</ion-label>
+          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>Shelved By</ion-label>
+          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+        </ion-item>
+        <ion-item>
           <ion-label color="primary" stacked>Special Instructions</ion-label>
           <ion-textarea [(ngModel)]="todo.Instructions" name="Instructions"></ion-textarea>
         </ion-item>
-          <button ion-button type="submit" block>Add Todo</button>
-  </ion-list>
-</form>
+        <button ion-button type="submit" block>Add Todo</button>
+      </ion-list>
+    </form>
+  </div>
+  <div style="float: right; width:50%; height: 100% ">
+    <h4 style="text-align:center;">Item List</h4>
+    <ag-grid-angular style=" background: red; width: 100%; height: 100%; " [gridOptions]="gridOptions" enableSorting enableFilter
+      enableColResize rowHeight="22" rowSelection="multiple" class="ag-fresh" [rowData]="rowData" [columnDefs]="columnDefs">
+    </ag-grid-angular>
+  </div>
+</ion-content>

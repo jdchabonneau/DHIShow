@@ -24,6 +24,7 @@ import { UsersProvider } from '../providers/users/users';
 import { ModalController } from 'ionic-angular';
 import { ModalCSVPage } from '../pages/modalCSV/modalCSV';
 import { ReceivingOrderPage } from './../pages/receiving-order/receiving-order';
+import { AutoCompleteModule } from 'ionic2-auto-complete'
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ReceivingOrderPage } from './../pages/receiving-order/receiving-order';
   ],
   imports: [
     BrowserModule,
+    AutoCompleteModule,
     HttpModule,
     AgGridModule.withComponents([]),
     IonicModule.forRoot(MyApp),

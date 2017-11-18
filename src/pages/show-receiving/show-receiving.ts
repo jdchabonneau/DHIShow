@@ -1,3 +1,4 @@
+import { ReceivingOrderPage } from './../receiving-order/receiving-order';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GridOptions } from "ag-grid/main";
@@ -18,6 +19,8 @@ export class ShowReceivingPage {
   columnDefs: any[]
   rowData: any[];
   showToolPanel = true;
+  noneSelected: boolean = true;
+  selectedRows;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //    this.gridOptions = <GridOptions>{};
@@ -25,7 +28,12 @@ export class ShowReceivingPage {
       columnDefs: this.columnDefs,
       enableRangeSelection: true,
       getContextMenuItems: this.getContextMenuItems,
-      allowContextMenuWithControlKey: true
+      allowContextMenuWithControlKey: true,
+      "onSelectionChanged": (event: any) => {
+        this.selectedRows = event.api.getSelectedRows();
+        this.noneSelected = this.selectedRows.length === 0;
+      }
+
     };
     this.columnDefs = [
       {
@@ -72,6 +80,18 @@ export class ShowReceivingPage {
       { "ID": 5712, "custName": "BTS", "custRefNum": "", "dueDate": "\/Date(1479661200000+0700)\/", "enteredBy": "jody", "notes": "", "pickedBy": "", "refNum": "", "shipTo": "", "totalPackageCount": 0, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
       { "ID": 5620, "custName": "MSC", "custRefNum": "", "dueDate": "\/Date(1477846800000+0700)\/", "enteredBy": "jody", "notes": "", "pickedBy": "", "refNum": "", "shipTo": "", "totalPackageCount": 1, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" }
     ];
+  }
+
+  onEdit() {
+    if (this.selectedRows && this.selectedRows.length > 0) {
+      let id = this.selectedRows[0]["ID"];
+      this.navCtrl.push(ReceivingOrderPage, { ID: id });
+    }
+  }
+
+  onReceive() {
+    //    console.log("onReceive()");
+    //    this.navCtrl.push(ReceivingOrderPage,{ID:7038});
   }
 
   getContextMenuItems() {

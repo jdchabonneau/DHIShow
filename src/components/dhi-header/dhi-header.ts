@@ -10,6 +10,7 @@ import { PopoverPage } from './pop-over'
 })
 export class DhiHeaderComponent {
 
+  jdc;
   text: string;
   warehouses: any[] = [];
   currentWhse = "Maui";

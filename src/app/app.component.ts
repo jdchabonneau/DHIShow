@@ -33,7 +33,7 @@ export class MyApp {
     this.pages = [
       { title: 'Whse Map', pageInfos: [{page: DummyPage, name: "wm1", pageType: 0 }, {page: DummyPage, name: "wm2", pageType: 0 }, {page: DummyPage, name: "wm3", pageType: 0 }] },
       { title: 'Purchase Orders', pageInfos: [{page: DummyPage, name: "Create New Purchase Order", pageType: 0 }, {page: DummyPage, name: "Edit Existing Purchase Order", pageType: 1 }, {page: DummyPage, name: "Show All PO's", pageType: 0 }] },
-      { title: 'Receiving', pageInfos: [{page: ReceivingOrderPage, name: "Create New Receiving Order", pageType: 0 }, {page: DummyPage, name: "Edit Existing Receiving Order", pageType: 1 }, {page: ShowReceivingPage, name: "Show All Receiving Orders", pageType: 0 }, {page: DummyPage, name: "Assign Locations", pageType: 0 }, {page: DummyPage, name: "Shelve an Order", pageType: 1 }] },
+      { title: 'Receiving', pageInfos: [{page: ReceivingOrderPage, name: "Create New Receiving Order", pageType: 0 }, {page: ReceivingOrderPage, name: "Edit Existing Receiving Order", pageType: 1 }, {page: ShowReceivingPage, name: "Show All Receiving Orders", pageType: 0 }, {page: DummyPage, name: "Assign Locations", pageType: 0 }, {page: DummyPage, name: "Shelve an Order", pageType: 1 }] },
       {
         title: 'Inventory', pageInfos: [{page: DummyPage, name: "Item Info", pageType: 0 }, {page: DummyPage, name: "Find These Items", pageType: 1 }, {page: DummyPage, name: "Snapshot", pageType: 0 },
         {page: DummyPage, name: "Customer Inventory", pageType: 0 }, {page: DummyPage, name: "In-Stock Inventory", pageType: 0 }, {page: DummyPage, name: "Physical Counts", pageType: 0 }, {page: DummyPage, name: "Storage History", pageType: 0 },

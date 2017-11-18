@@ -1,7 +1,30 @@
 <ion-header>
   <dhi-header></dhi-header>
   <ion-navbar>
-    <ion-title>Receiving Reports</ion-title>
+  <ion-buttons >
+    <button ion-button  >
+      <ion-icon name="menu"> Menu</ion-icon>
+    </button>
+    <button ion-button ><h4>Receiving Report</h4></button>
+    <button ion-button  >
+      <ion-icon name="options"> Options</ion-icon>
+    </button>
+    <button ion-button  >
+      <ion-icon name="print"> Print</ion-icon>
+    </button>
+    <button ion-button  >
+      <ion-icon name="print"> Print Labels</ion-icon>
+    </button>
+    <button ion-button  >
+      <ion-icon name="clipboard"> Import</ion-icon>
+    </button>
+    <button ion-button  >
+      <ion-icon name="archive"> Shelve</ion-icon>
+    </button>
+    <button ion-button  >
+      <ion-icon name="cloud-done"> Save</ion-icon>
+    </button>
+  </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -10,9 +33,9 @@
     <h4 style="text-align:center;"> Report Details</h4>
     <form #form="ngForm" (ngSubmit)="logForm(form)" novalidate>
       <ion-list>
-        <ion-item>
+        <!-- <ion-item>
             <ion-label color="primary" stacked name="cust">Customer</ion-label>
-            <!-- <ion-select [(ngModel)]="gaming"> -->
+            <!-- <ion-select [(ngModel)]="gaming"> 
               <ion-select>
               <ion-option value="nes">NES</ion-option>
               <ion-option value="n64">Nintendo64</ion-option>
@@ -21,12 +44,16 @@
               <ion-option value="saturn">Sega Saturn</ion-option>
               <ion-option value="snes">SNES</ion-option>
             </ion-select>            
-        </ion-item>
+        </ion-item> -->
 
         <ion-item>
-          <ion-label color="primary" stacked>Customer</ion-label>
-          <ion-input type="text" required [(ngModel)]="todo.customer" name="customer" autofocus></ion-input>
-        </ion-item>
+            <ion-auto-complete [dataProvider]="customerList()" ></ion-auto-complete>
+            
+          </ion-item>
+          <ion-item>
+              <ion-label color="primary" stacked>Customer</ion-label>
+              <ion-input type="text" required [(ngModel)]="todo.custName" name="customer" autofocus></ion-input>
+            </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>ID</ion-label>
           <!-- <ion-input [(ngModel)]="todo.ID" name="ID" (keypress)="onDateKeyPress($event)"></ion-input> -->
@@ -34,19 +61,21 @@
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Warehouse</ion-label>
-          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+          <ion-input [(ngModel)]="todo.whseName" name="Warehouse"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Rceived Date</ion-label>
-          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+          <!-- <ion-input [ngModel]="todo.receivingDate | date:'short'"  -->
+          <ion-input [ngModel]="todo.receivingDate" 
+          (ngModelChange)="todo.receivingDate=$event" name="receivingDate" type="text"></ion-input>        
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Carrier</ion-label>
-          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+          <ion-input [(ngModel)]="todo.truckingName" name="truckingName"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Bill of Lading Number</ion-label>
-          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+          <ion-input [(ngModel)]="todo.billOfLading" name="billOfLading"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Reference Number</ion-label>
@@ -58,23 +87,23 @@
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Pallets Received</ion-label>
-          <ion-input type="number" [(ngModel)]="todo.Pallets" name="Pallets"></ion-input>
+          <ion-input type="number" [(ngModel)]="todo.palletsTotal" name="palletsTotal"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Cartons Received</ion-label>
-          <ion-input type="number" [(ngModel)]="todo.Cartons" name="Carons"></ion-input>
+          <ion-input type="number" [(ngModel)]="todo.packageTotal" name="packageTotal"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Received By</ion-label>
-          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+          <ion-input [(ngModel)]="todo.receivedBy" name="receivedBy"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Shelved By</ion-label>
-          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+          <ion-input [(ngModel)]="todo.shelvedBy" name="shelvedBy"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Special Instructions</ion-label>
-          <ion-textarea [(ngModel)]="todo.Instructions" name="Instructions"></ion-textarea>
+          <ion-textarea [(ngModel)]="todo.notes" name="notes"></ion-textarea>
         </ion-item>
         <button ion-button type="submit" block>Add Todo</button>
       </ion-list>

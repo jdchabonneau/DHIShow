@@ -8,7 +8,7 @@ import { NavController, NavParams } from 'ionic-angular';
 export class POPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{title: string, note: string, icon: string, targetPage: any}>;
+  items: Array<{title: string, note: string, icon: string, targetPage: any, needsInput:boolean}>;
   title: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -27,6 +27,7 @@ export class POPage {
       this.items.push({
         title: pageInfos[i].name,
         note: 'This is type #' + pageInfos[i].pageType,
+        needsInput: pageInfos[i].pageType == 1,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)],
         targetPage: pageInfos[i].page
       });
@@ -34,7 +35,7 @@ export class POPage {
   }
 
   itemTapped(event, item) {
-    console.log("item = " + item);
+    //console.log("item = " + item);
     // That's right, we're pushing to ourselves!
     this.navCtrl.push(item.targetPage, {
       item: item

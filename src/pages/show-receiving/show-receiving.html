@@ -3,8 +3,25 @@
     <dhi-header></dhi-header>
     
   <ion-navbar>
-    <ion-title>Receiving Reports</ion-title>
-  </ion-navbar>
+    <ion-buttons >
+      <button ion-button  >
+        <ion-icon name="menu"> Menu</ion-icon>
+      </button>
+      <button ion-button ><h4>Receiving Reports</h4></button>
+      <button ion-button  >
+        <ion-icon name="options"> Options</ion-icon>
+      </button>
+      <button ion-button (click)="onEdit()" [attr.disabled]="noneSelected ? '' : null">
+        <ion-icon name="create"> Edit</ion-icon>
+      </button>
+      <button ion-button (click)="onReceive()" [attr.disabled]="noneSelected ? '' : null">
+        <ion-icon name="archive" > Receive</ion-icon>
+      </button>
+      <button ion-button [attr.disabled]="noneSelected ? '' : null">
+        <ion-icon name="trash"> Delete</ion-icon>
+      </button>
+    </ion-buttons>
+    </ion-navbar>
 
 </ion-header>
 

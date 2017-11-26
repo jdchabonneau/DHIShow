@@ -15,6 +15,12 @@ export class DhiDataProvider {
     //this.getItemTypes2();
   }
 
+getReceivingOrders(
+  whseID: number, // -1 all waregouses
+  custID: number // -1 all customers
+){
+  return this.http.get(this.url + "GetRcvReports?whseID="+ whseID);  
+}
 
   getReceivingOrder(orderID: number){
    return this.http.get(this.url + "GetReceivingOrder?OrderID="+ orderID);

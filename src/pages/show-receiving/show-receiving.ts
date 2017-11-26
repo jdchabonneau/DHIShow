@@ -1,13 +1,9 @@
 import { ReceivingOrderPage } from './../receiving-order/receiving-order';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { GridOptions } from "ag-grid/main";
-/**
- * Generated class for the ShowReceivingPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { DhiDataProvider } from "../../providers/dhi-data/dhi-data"
+import { ModalCSVPage } from '../../pages/modalCSV/modalCSV';
 
 @IonicPage()
 @Component({
@@ -21,8 +17,14 @@ export class ShowReceivingPage {
   showToolPanel = true;
   noneSelected: boolean = true;
   selectedRows;
+  includeAllWhses: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private dhiData: DhiDataProvider,
+    private modalCtrl: ModalController 
+  ) {
     //    this.gridOptions = <GridOptions>{};
     this.gridOptions = {
       columnDefs: this.columnDefs,
@@ -44,21 +46,21 @@ export class ShowReceivingPage {
         suppressMenu: true,
         pinned: true
       },
-      { headerName: "Whse", field: "whseName", width: 50 },
+      { headerName: "Whse", field: "warehouse", width: 50 },
       { headerName: "ID", field: "ID" },// cellRendererFramework: RedComponent },
       { headerName: "Customer", field: "custName", width: 80 },
-      { headerName: "Bill of Lading", field: "custRefNum", width: 80 },
+      { headerName: "Bill of Lading", field: "BillOfLading", width: 80 },
       { headerName: "Ref#", field: "refNum", width: 80 },
-      { headerName: "Carrier", field: "via", width: 80 },
-      { headerName: "Supplier", field: "price", width: 80 },
-      { headerName: "Items", field: "price", width: 80 },
-      { headerName: "Plts", field: "price", width: 80 },
-      { headerName: "Pkgs", field: "totalPackageCount", width: 80 },
-      { headerName: "Received", field: "enteredBy", width: 80 },
-      { headerName: "Rcvd By", field: "price", width: 80 },
-      { headerName: "Shelved", field: "price", width: 80 },
-      { headerName: "Shelved By", field: "price", width: 80 },
-      { headerName: "P.O. ID", field: "price", width: 80 },
+      { headerName: "Carrier", field: "truckLine", width: 80 },
+      { headerName: "Supplier", field: "supplier", width: 80 },
+      { headerName: "Items", field: "numItems", width: 80 },
+      { headerName: "Plts", field: "palletTotal", width: 80 },
+      { headerName: "Pkgs", field: "packageTotal", width: 80 },
+      { headerName: "Received", field: "rcvdDate", width: 80, cellFilter: 'date:\'yyyy-MM-dd\'' },
+      { headerName: "Rcvd By", field: "rcvdBy", width: 80 },
+      { headerName: "Shelved", field: "shelvedDate", width: 80 },
+      { headerName: "Shelved By", field: "shelvedBy", width: 80 },
+      { headerName: "P.O. ID", field: "PoID", width: 80 },
       //{ headerName: "Year", field: "year" }
     ];
 
@@ -69,9 +71,9 @@ export class ShowReceivingPage {
       //   { make: "Porsche", model: "Boxter", price: 72000 }
 
       //[
-      { "ID": 7038, "custName": "Impact", "custRefNum": "813497", "dueDate": "\/Date(1503248400000+0700)\/", "enteredBy": "jody", "notes": "813497", "pickedBy": "", "refNum": "81817OH", "shipTo": "", "totalPackageCount": 0, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
-      { "ID": 6547, "custName": "IWKB", "custRefNum": "", "dueDate": "\/Date(1495126800000+0700)\/", "enteredBy": "jody", "notes": "", "pickedBy": "", "refNum": "", "shipTo": "", "totalPackageCount": 2, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
-      { "ID": 6140, "custName": "Impact", "custRefNum": "793276", "dueDate": "\/Date(1488042000000+0700)\/", "enteredBy": "jody", "notes": "793276", "pickedBy": "", "refNum": "22417OH", "shipTo": "", "totalPackageCount": 0, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
+      { "ID": 7038, "custName": "Impact", "custRefNum": "813497", "rcvdDate": "Date(1503248400000+0700)", "enteredBy": "jody", "notes": "813497", "pickedBy": "", "refNum": "81817OH", "shipTo": "", "totalPackageCount": 0, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
+      { "ID": 6547, "custName": "IWKB", "custRefNum": "", "rcvdDate": "(1495126800000+0700)", "enteredBy": "jody", "notes": "", "pickedBy": "", "refNum": "", "shipTo": "", "totalPackageCount": 2, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
+      { "ID": 6140, "custName": "Impact", "custRefNum": "793276", "rcvdDate": "2009-02-15T00:00:00Z", "enteredBy": "jody", "notes": "793276", "pickedBy": "", "refNum": "22417OH", "shipTo": "", "totalPackageCount": 0, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
       { "ID": 6002, "custName": "ELE", "custRefNum": "", "dueDate": "\/Date(1485709200000+0700)\/", "enteredBy": "asher", "notes": "", "pickedBy": "", "refNum": "78302", "shipTo": "", "totalPackageCount": 3, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
       { "ID": 5994, "custName": "DAY", "custRefNum": "788455", "dueDate": "\/Date(1485450000000+0700)\/", "enteredBy": "asher", "notes": "788455", "pickedBy": "", "refNum": "", "shipTo": "", "totalPackageCount": 1, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
       { "ID": 5986, "custName": "KPub", "custRefNum": "", "dueDate": "\/Date(1485363600000+0700)\/", "enteredBy": "nina", "notes": "", "pickedBy": "", "refNum": "01262017", "shipTo": "", "totalPackageCount": 1, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
@@ -80,6 +82,15 @@ export class ShowReceivingPage {
       { "ID": 5712, "custName": "BTS", "custRefNum": "", "dueDate": "\/Date(1479661200000+0700)\/", "enteredBy": "jody", "notes": "", "pickedBy": "", "refNum": "", "shipTo": "", "totalPackageCount": 0, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
       { "ID": 5620, "custName": "MSC", "custRefNum": "", "dueDate": "\/Date(1477846800000+0700)\/", "enteredBy": "jody", "notes": "", "pickedBy": "", "refNum": "", "shipTo": "", "totalPackageCount": 1, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" }
     ];
+  }
+
+  onCSVExport() {
+    //    this.gridOptions.api.exportDataAsCsv();
+    let modal = this.modalCtrl.create(ModalCSVPage, {"api": this.gridOptions.api});
+    modal.present();
+  }
+  onBtnRefresh(){
+    this.dhiData.getReceivingOrders(this.includeAllWhses ? -1 : 0, -1).subscribe(resp=>this.rowData = resp.json());
   }
 
   onEdit() {

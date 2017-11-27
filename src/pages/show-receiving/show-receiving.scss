@@ -1,3 +1,29 @@
 page-show-receiving {
-
+    .jasonGrid{
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+    ion-buttons{
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    .CheckBox{
+        grid-column: 2/3;
+        grid-row: 1/2;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background-color: rgba(255, 255, 255, 0);
+        cursor: default;
+        font-size: 1em;
+        line-height: 150%;
+        vertical-align: middle;
+        text-align: left;
+    }
+    ion-checkbox{
+        margin-right: 5px;
+        line-height: 180%;
+        vertical-align: middle;
+    }
 }

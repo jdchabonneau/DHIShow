@@ -19,7 +19,6 @@ export class ReceivingOrderPage {
   columnDefs: any[]
   rowData: any[];
   showToolPanel = true;
-  jjj = "";
 
 
   constructor(private dhiDataProvider: DhiDataProvider, public navParams: NavParams) {

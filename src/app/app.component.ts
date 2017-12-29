@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { DateComponent } from '../components/date/date.component';
 import { DhiHeaderComponent } from '../components/dhi-header/dhi-header';
 import { HomePage } from '../pages/home/home';
 import { POPage } from '../pages/po/po';

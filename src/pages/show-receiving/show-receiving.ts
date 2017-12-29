@@ -4,6 +4,8 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { GridOptions } from "ag-grid/main";
 import { DhiDataProvider } from "../../providers/dhi-data/dhi-data"
 import { ModalCSVPage } from '../../pages/modalCSV/modalCSV';
+import { DateComponent } from '../../components/date/date.component';
+
 
 @IonicPage()
 @Component({
@@ -56,9 +58,10 @@ export class ShowReceivingPage {
       { headerName: "Items", field: "numItems", width: 80 },
       { headerName: "Plts", field: "palletTotal", width: 80 },
       { headerName: "Pkgs", field: "packageTotal", width: 80 },
-      { headerName: "Received", field: "rcvdDate", width: 80, cellFilter: 'date:\'yyyy-MM-dd\'' },
+//      { headerName: "Received", field: "rcvdDate", width: 80, cellFilter: 'date:\'yyyy-MM-dd\'' },
+      { headerName: "Received", field: "rcvdDate", width: 80, cellRendererFramework: DateComponent },
       { headerName: "Rcvd By", field: "rcvdBy", width: 80 },
-      { headerName: "Shelved", field: "shelvedDate", width: 80 },
+      { headerName: "Shelved", field: "shelvedDate", width: 80, cellRendererFramework: DateComponent },
       { headerName: "Shelved By", field: "shelvedBy", width: 80 },
       { headerName: "P.O. ID", field: "PoID", width: 80 },
       //{ headerName: "Year", field: "year" }
@@ -71,7 +74,7 @@ export class ShowReceivingPage {
       //   { make: "Porsche", model: "Boxter", price: 72000 }
 
       //[
-      { "ID": 7038, "custName": "Impact", "custRefNum": "813497", "rcvdDate": "Date(1503248400000+0700)", "enteredBy": "jody", "notes": "813497", "pickedBy": "", "refNum": "81817OH", "shipTo": "", "totalPackageCount": 0, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
+      { "ID": 7038, "custName": "Impact", "custRefNum": "813497", "rcvdDate": "1503248400000", "enteredBy": "jody", "notes": "813497", "pickedBy": "", "refNum": "81817OH", "shipTo": "", "totalPackageCount": 0, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
       { "ID": 6547, "custName": "IWKB", "custRefNum": "", "rcvdDate": "(1495126800000+0700)", "enteredBy": "jody", "notes": "", "pickedBy": "", "refNum": "", "shipTo": "", "totalPackageCount": 2, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
       { "ID": 6140, "custName": "Impact", "custRefNum": "793276", "rcvdDate": "2009-02-15T00:00:00Z", "enteredBy": "jody", "notes": "793276", "pickedBy": "", "refNum": "22417OH", "shipTo": "", "totalPackageCount": 0, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },
       { "ID": 6002, "custName": "ELE", "custRefNum": "", "dueDate": "\/Date(1485709200000+0700)\/", "enteredBy": "asher", "notes": "", "pickedBy": "", "refNum": "78302", "shipTo": "", "totalPackageCount": 3, "verifiedBy": "", "via": "", "whseID": 2, "whseName": "Oahu" },

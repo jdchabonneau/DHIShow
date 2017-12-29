@@ -35,7 +35,7 @@
       <ion-list>
         <!-- <ion-item>
             <ion-label color="primary" stacked name="cust">Customer</ion-label>
-            <!-- <ion-select [(ngModel)]="gaming"> 
+            <!-- <ion-select [(ngModel)]="gaming">
               <ion-select>
               <ion-option value="nes">NES</ion-option>
               <ion-option value="n64">Nintendo64</ion-option>
@@ -43,12 +43,12 @@
               <ion-option value="genesis">Sega Genesis</ion-option>
               <ion-option value="saturn">Sega Saturn</ion-option>
               <ion-option value="snes">SNES</ion-option>
-            </ion-select>            
+            </ion-select>
         </ion-item> -->
 
         <ion-item>
             <ion-auto-complete [dataProvider]="customerList()" ></ion-auto-complete>
-            
+
           </ion-item>
           <ion-item>
               <ion-label color="primary" stacked>Customer</ion-label>
@@ -65,9 +65,8 @@
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Rceived Date</ion-label>
-          <!-- <ion-input [ngModel]="todo.receivingDate | date:'short'"  -->
-          <ion-input [ngModel]="todo.receivingDate" 
-          (ngModelChange)="todo.receivingDate=$event" name="receivingDate" type="text"></ion-input>        
+          <ion-input [ngModel]="todo.receivingDate | datePipe"  
+          name="receivingDate" type="text"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Carrier</ion-label>
@@ -82,8 +81,8 @@
           <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label color="primary" stacked>Suplier</ion-label>
-          <ion-input [(ngModel)]="todo.Warehouse" name="Warehouse"></ion-input>
+          <ion-label color="primary" stacked>Supplier</ion-label>
+          <ion-input [(ngModel)]="todo.supplier" name="supplier"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label color="primary" stacked>Pallets Received</ion-label>

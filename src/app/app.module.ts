@@ -1,9 +1,11 @@
+
 import { FormBuilder } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
+import { DateComponent } from '../components/date/date.component';
 import { DhiHeaderComponent } from '../components/dhi-header/dhi-header';
 import { PopoverPage } from './../components/dhi-header/pop-over';
 import { HomePage } from '../pages/home/home';
@@ -25,10 +27,12 @@ import { ModalController } from 'ionic-angular';
 import { ModalCSVPage } from '../pages/modalCSV/modalCSV';
 import { ReceivingOrderPage } from './../pages/receiving-order/receiving-order';
 import { AutoCompleteModule } from 'ionic2-auto-complete'
+import { DatePipe} from '../pipes/date/date';
 
 @NgModule({
   declarations: [
     MyApp,
+    DatePipe,
     HomePage,
     POPage,
     DummyPage,
@@ -38,6 +42,7 @@ import { AutoCompleteModule } from 'ionic2-auto-complete'
     LabelPrintersPage,
     WarehousesPage,
     DhiHeaderComponent,
+    DateComponent,
     ShowReceivingPage,
     ReceivingOrderPage,
     ModalCSVPage,
@@ -61,6 +66,7 @@ import { AutoCompleteModule } from 'ionic2-auto-complete'
     LabelPrintersPage,
     WarehousesPage,
     DhiHeaderComponent,
+    DateComponent,
     ShowReceivingPage,
     ReceivingOrderPage,
     ModalCSVPage,

@@ -9,10 +9,10 @@ export class DhiDataProvider {
   items;
   customers;
   warehouses;
-  url = "http://ims.beta.deliveryhawaii.com/Services/Service1.svc/";
+  url = "http://ims.beta.deliveryhawaii.com/Services/Service1.svc/"; 
 
   constructor(public http: Http) {
-    //this.getItemTypes2();
+    //this.getItemTypes2(); //
   }
 
 getReceivingOrders(
